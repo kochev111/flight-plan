@@ -80,11 +80,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+if not DEBUG:
+    db = 'postgresql://postgres:postgres@localhost:5432/mysite'
+else:
+    db = 'postgres://flight_plan_db_user:xolNbOML3vRKckecjNggLeWpT4kRbw06@dpg-cjf8hefut75s73eh4vj0-a.frankfurt-postgres.render.com/flight_plan_db'
+
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgres://flight_plan_db_user:xolNbOML3vRKckecjNggLeWpT4kRbw06@dpg-cjf8hefut75s73eh4vj0-a.frankfurt-postgres.render.com/flight_plan_db',
-        # default='postgresql://postgres:postgres@localhost:5432/mysite',
+        default=db,
         conn_max_age=600
     )
 }
