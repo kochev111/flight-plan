@@ -83,7 +83,8 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        default='postgres://flight_plan_db_user:xolNbOML3vRKckecjNggLeWpT4kRbw06@dpg-cjf8hefut75s73eh4vj0-a.frankfurt-postgres.render.com/flight_plan_db',
+        # default='postgresql://postgres:postgres@localhost:5432/mysite',
         conn_max_age=600
     )
 }
