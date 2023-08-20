@@ -12,6 +12,7 @@ dj-database-url = "^2.1.0"
 psycopg2-binary = "^2.9.7"
 whitenoise = {extras = ["brotli"], version = "^6.5.0"}
 gunicorn = "^21.2.0"
+django-widget-tweaks = "^1.4.12"
 
 
 [build-system]
