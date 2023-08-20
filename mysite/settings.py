@@ -83,7 +83,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 if not DEBUG:
     db = 'postgresql://postgres:postgres@localhost:5432/mysite'
 else:
-    db = 'postgres://flight_plan_db_user:xolNbOML3vRKckecjNggLeWpT4kRbw06@dpg-cjf8hefut75s73eh4vj0-a.frankfurt-postgres.render.com/flight_plan_db'
+    with open('mysite/secret.txt') as f:
+        lines = f.readlines()
+    db = lines[0]
 
 DATABASES = {
     'default': dj_database_url.config(
