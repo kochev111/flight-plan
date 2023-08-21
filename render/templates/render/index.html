@@ -16,30 +16,31 @@
 </head>
 <body>
 <header class="container mt-4 mb-4">
-    <a href="https://render.com">
+    <a>
         <img src="{% static 'render/header.png' %}" alt="FlightPlan" class="mw-100">
     </a>
 </header>
 <main class="container">
     <div class="row text-center justify-content-center">
-        <div class="col">
-            <h1 class="display-4">Calculate your Flight Plan</h1>
+        <div>
+            <h1 class="display-9">Calculate your Flight Plan</h1>
         </div>
     </div>
-    <form action="/get_input/" method="post">
+    <div align="left">
+        <br>
+        <h5 class="display-5">Enter your pattern heights and flight characteristics: </h5>
+        <br>
+    </div>
+
+    <form action="/get-input/" method="post">
         {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-        {{ hidden }}
-        {% endfor %}
-        {% for field in form.visible_fields %}
-            <div class="fieldWrapper">
-                {{ field.errors }}
-                {{ field.label_tag }} {{ field }}
-            </div>
-        {% endfor %}
-<!--        {% include 'render/form.html' with form=form %}-->
+        <table>
+            {{ form.as_table }}
+        </table>
         <input type="submit" value="Submit">
     </form>
+
+
 </main>
 </body>
 </html>

@@ -5,7 +5,6 @@ CHOICES = [
     ('-1', 'Right'),
 ]
 class InputForm(forms.Form):
-    your_comment = forms.CharField(label="Comment, e.g. canopy model & size", max_length=100, required=False)
     your_final = forms.IntegerField(label="Final approach height, ft", min_value="200",
                                              max_value="1000", initial="400", step_size="1")
     your_base = forms.IntegerField(label="Base leg height, ft", min_value="200",
@@ -22,6 +21,7 @@ class InputForm(forms.Form):
                                         max_value="10", initial="2.5", step_size="0.01")
     your_swoop = forms.IntegerField(label="Swoop length, m", min_value="0",
                                              max_value="200", initial="5", step_size="1")
-    your_landing_direction = forms.IntegerField(label="Landing direction, deg", min_value="0",
+    your_landing_direction = forms.IntegerField(label="Landing direction, deg (into wind if blank)", min_value="0",
                                              max_value="360", step_size="1", required=False)
     your_pattern_direction = forms.ChoiceField(label="Pattern Direction", widget=forms.RadioSelect, choices=CHOICES)
+    your_comment = forms.CharField(label="Canopy model & size (for display only)", max_length=100, required=False)
