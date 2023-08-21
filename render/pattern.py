@@ -1,6 +1,6 @@
 import math
 from PIL import Image, ImageDraw, ImageFont
-from forecast import Forecast
+from .forecast import Forecast
 import datetime as dt
 
 
