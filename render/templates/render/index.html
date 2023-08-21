@@ -28,7 +28,16 @@
     </div>
     <form action="/get_input/" method="post">
         {% csrf_token %}
-        {% include 'render/form.html' with form=form %}
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+<!--        {% include 'render/form.html' with form=form %}-->
         <input type="submit" value="Submit">
     </form>
 </main>
