@@ -6,7 +6,7 @@ import datetime as dt
 
 class Pattern:
     def __init__(self, altitudes_ft=[], landing_dir_deg=None, drop_in_turn_ft=0, vertical_speed_mph=0,
-                 glide_ratio=0, swoop_length_m=0, hand_pattern='', comment=''):
+                 glide_ratio=0, swoop_length_m=0, hand_pattern=0, comment=''):
         self.altitudes_ft = altitudes_ft
         if len(altitudes_ft) not in (3, 4):
             raise Exception("3 or 4 altitudes must be specified for the pattern")
@@ -20,12 +20,13 @@ class Pattern:
         self.vertical_speed_kmh = self.vertical_speed_mph * 1.60934
         self.glide_ratio = glide_ratio
         self.swoop_length_m = swoop_length_m
-        self.pattern_turn = 90 * hand_pattern # 1 if left, -1 if right
+        self.pattern_turn = 90 * int(hand_pattern)  # 1 if left, -1 if right
         self.comment = comment
+        self.pattern_offsets = {}
+        self.forecast = Forecast()
         self.refresh()
 
     def refresh(self):
-        self.forecast = Forecast()
         self.calculate_pattern()
 
     def calculate_pattern(self):
@@ -40,7 +41,8 @@ class Pattern:
         # work backwards from target
         final_time_hrs = (altitudes_m[0] - self.drop_in_turn_m) / 1000 / self.vertical_speed_kmh
         final_track_rad = (final_time_hrs * self.vertical_speed_kmh * self.glide_ratio * 1000
-                           + self.swoop_length_m,self.landing_dir_deg - 180) # landing direction converted from runway convention
+                           + self.swoop_length_m,
+                           self.landing_dir_deg - 180)  # landing direction converted from runway convention
         final_drift_rad = (final_time_hrs * winds[0][0] * 1000, winds[0][1])
         final_offset = self.add_vectors(final_drift_rad, final_track_rad)
 
@@ -87,7 +89,7 @@ class Pattern:
         return offset
 
     def render(self):
-        PLA = Image.open("langar_map.jpg")
+        PLA = Image.open("render/static/render/langar_map.jpg")
         points = self.pattern_offsets
         draw = ImageDraw.Draw(PLA)
         s = PLA.size

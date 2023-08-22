@@ -5,6 +5,8 @@ from django.shortcuts import render
 from .forms import InputForm
 from django.http import HttpResponseRedirect
 from .classes import Plan
+from django.http import JsonResponse
+
 
 def index(request):
     # if this is a POST request we need to process the form data
@@ -14,8 +16,6 @@ def index(request):
         # check whether it's valid:
         if form.is_valid():
             plan = Plan(form.cleaned_data)
-
-            return HttpResponseRedirect("/thanks/")
 
     # if a GET (or any other method) we'll create a blank form
     else:

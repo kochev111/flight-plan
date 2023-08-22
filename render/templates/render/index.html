@@ -17,7 +17,7 @@
 <body>
 <header class="container mt-4 mb-4">
     <a>
-        <img src="{% static 'render/header.png' %}" alt="FlightPlan" class="mw-100">
+        <img src="{% static 'render/header.png' %}" alt="Langar" class="mw-100">
     </a>
 </header>
 <main class="container">
@@ -32,15 +32,17 @@
         <br>
     </div>
 
-    <form action="/get-input/" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
         <input type="submit" value="Submit">
     </form>
+    <br>
 
-
-</main>
+    <a>
+        <img src="{% static 'render/langar_map.jpg' %}" alt="Flight Plan" class="mw-100">
+    </a></main>
 </body>
 </html>
