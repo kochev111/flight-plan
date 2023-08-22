@@ -8,8 +8,8 @@ class Plan(models.Model):
     downwind = models.IntegerField()
     initial = models.IntegerField()
     drop = models.IntegerField()
-    vspeed = models.IntegerField()
-    glider = models.FloatField()
+    vertical_speed = models.IntegerField()
+    glide_ratio = models.FloatField()
     swoop = models.IntegerField()
     landing_dir = models.IntegerField()
     pattern_dir = models.IntegerField()
@@ -23,8 +23,8 @@ class Plan(models.Model):
         self.downwind = inputs.get("your_downwind",'')
         self.initial = inputs.get("your_initial",'')
         self.drop = inputs.get("your_drop",'')
-        self.vspeed = inputs.get("your_vertical_speed",'')
-        self.glider = inputs.get("your_glide_ratio",'')
+        self.vertical_speed = inputs.get("your_vertical_speed", '')
+        self.glide_ratio = inputs.get("your_glide_ratio", '')
         self.swoop = inputs.get("your_swoop",'')
         self.landing_dir = inputs.get("your_landing_direction", None)
         self.pattern_dir = inputs.get("your_pattern_direction",0)
@@ -34,12 +34,12 @@ class Plan(models.Model):
 
     def prepare_pattern(self):
         inputs = {'altitudes_ft': [self.final, self.base, self.downwind, self.initial],
-                  'drop_in_turn_ft': self.drop, 'vertical_speed_mph': self.vspeed,
-                  'glide_ratio': self.glider, 'swoop_length_m': self.swoop,
+                  'drop_in_turn_ft': self.drop, 'vertical_speed_mph': self.vertical_speed,
+                  'glide_ratio': self.glide_ratio, 'swoop_length_m': self.swoop,
                   'landing_dir_deg': self.landing_dir, 'hand_pattern': self.pattern_dir,
                   'comment': self.comment}
-        P = Pattern(**inputs)
-        self.pattern = P.render()
+        p = Pattern(**inputs)
+        self.pattern = p.render()
 
     def get_pattern(self):
         return self.pattern

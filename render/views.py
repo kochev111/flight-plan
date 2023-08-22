@@ -23,3 +23,9 @@ def index(request):
 
     return render(request, "render/index.html", {"form": form})
 
+def pattern(request):
+    data = Plan.objects.all()
+    context = {
+        'data' : data
+    }
+    return render(request,"pattern.html", context)
