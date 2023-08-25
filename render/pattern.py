@@ -112,7 +112,7 @@ class Pattern:
         draw.line(final_setup + base_setup, width=3, fill="white")
         draw.line(base_setup + downwind_setup, width=3, fill="white")
         draw.line(downwind_setup + initial_setup, width=3, fill="white")
-        font = ImageFont.truetype("Arial.ttf", 30)
+        font = ImageFont.truetype("AdobeVFPrototype.ttf", 30)
         text = self.make_text()
         draw.text((50, 200), text, (255, 255, 255), font=font)
 
