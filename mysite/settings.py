@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # 'django-insecure-941iv-lqij79o=ea%y51@am$i4-kmz782fu8rc3d@rkhk91e4!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' in os.environ # removed not, temporarily
+DEBUG = 'RENDER' not in os.environ # removed not, temporarily
 
 ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if DEBUG: # removed not, temporarily
+if not DEBUG: # removed not, temporarily
     db = 'postgresql://postgres:postgres@localhost:5432/mysite'
 else:
     with open('mysite/secret.txt') as f:
