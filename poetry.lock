@@ -141,6 +141,47 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-admin"
+version = "2.0.2"
+description = "Django Admin Extensions"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-admin-2.0.2.tar.gz", hash = "sha256:43c9f94ca5ad498789c0282691931c609c8e26db61aeb49ae8ad90d15b80cb75"},
+    {file = "django_admin-2.0.2-py2.py3-none-any.whl", hash = "sha256:a92f9fb21f63edabb5db9030f36b62c6c16a0187183e7e7de4142aee4472b70f"},
+]
+
+[package.dependencies]
+django-excel-response2 = ">=3.0.0"
+django-six = "*"
+
+[[package]]
+name = "django-excel-response2"
+version = "3.0.6"
+description = "A function extends of Tarken's django-excel-response"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-excel-response2-3.0.6.tar.gz", hash = "sha256:404b28818a262153559155239b719ba50e3c09484d638acdaadadfb309fc1b56"},
+    {file = "django_excel_response2-3.0.6-py2.py3-none-any.whl", hash = "sha256:fe0c54207caf7efefcad689427bffad9209808e6102becb07967d5f8c92b82c7"},
+]
+
+[package.dependencies]
+django-six = ">=1.0.4"
+excel-base = ">=1.0.3"
+
+[[package]]
+name = "django-six"
+version = "1.0.5"
+description = "Django-six —— Django Compatibility Library"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-six-1.0.5.tar.gz", hash = "sha256:9ad505d101ac3ce5a59d22693fcf77b4b19764020e0c7edfe939d220cafbf3a9"},
+    {file = "django_six-1.0.5-py2.py3-none-any.whl", hash = "sha256:50816cf52e16814dff58eacd4883d9e5a43be37e53dcbd99323d1139ff89f73b"},
+]
+
+[[package]]
 name = "django-widget-tweaks"
 version = "1.4.12"
 description = "Tweak the form field rendering in templates, not in python-level form definitions."
@@ -150,6 +191,22 @@ files = [
     {file = "django-widget-tweaks-1.4.12.tar.gz", hash = "sha256:9bfc5c705684754a83cc81da328b39ad1b80f32bd0f4340e2a810cbab4b0c00e"},
     {file = "django_widget_tweaks-1.4.12-py3-none-any.whl", hash = "sha256:fe6b17d5d595c63331f300917980db2afcf71f240ab9341b954aea8f45d25b9a"},
 ]
+
+[[package]]
+name = "excel-base"
+version = "1.0.4"
+description = "Excel Base"
+optional = false
+python-versions = "*"
+files = [
+    {file = "excel-base-1.0.4.tar.gz", hash = "sha256:5b3f2ead44a1b35ed3099e127fc3de9d6eb453bba9acc1058af215e21b4ee20c"},
+    {file = "excel_base-1.0.4-py2.py3-none-any.whl", hash = "sha256:3cdd3ef3366422eda12c7a72157053c8cbd06bcfe63a9280bc443ed21186372f"},
+]
+
+[package.dependencies]
+screen = "*"
+TimeConvert = ">=1.5.3"
+xlwt = "*"
 
 [[package]]
 name = "gunicorn"
@@ -170,6 +227,17 @@ eventlet = ["eventlet (>=0.24.1)"]
 gevent = ["gevent (>=1.4.0)"]
 setproctitle = ["setproctitle"]
 tornado = ["tornado (>=0.2)"]
+
+[[package]]
+name = "isoweek"
+version = "1.3.3"
+description = "Objects representing a week"
+optional = false
+python-versions = "*"
+files = [
+    {file = "isoweek-1.3.3-py2.py3-none-any.whl", hash = "sha256:d3324c497d97f1534669de225ec877964222e4cc773a4a99063086f7a4e342b6"},
+    {file = "isoweek-1.3.3.tar.gz", hash = "sha256:73f3f7bac443e05a3ab45c32a72048b0c4f26d53d81462ec4b142c7581d3ffe8"},
+]
 
 [[package]]
 name = "numpy"
@@ -355,6 +423,42 @@ files = [
 ]
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+files = [
+    {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
+    {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
+]
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
+name = "screen"
+version = "1.0.1"
+description = "Screen width and so on"
+optional = false
+python-versions = "*"
+files = [
+    {file = "screen-1.0.1-cp27-cp27m-macosx_10_9_intel.whl", hash = "sha256:29009e0306d005679cc43c8cd69856a046265433310c10e71920591de3c58fda"},
+    {file = "screen-1.0.1.tar.gz", hash = "sha256:aebfe90de7b8a646d4f3c2b214bd6ffa2ab12ed9d0b14c08620d9c7f7b8ee670"},
+]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+files = [
+    {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+    {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
+]
+
+[[package]]
 name = "sqlparse"
 version = "0.4.4"
 description = "A non-validating SQL parser."
@@ -369,6 +473,22 @@ files = [
 dev = ["build", "flake8"]
 doc = ["sphinx"]
 test = ["pytest", "pytest-cov"]
+
+[[package]]
+name = "timeconvert"
+version = "3.0.13"
+description = "Time Convert for Humans™"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "TimeConvert-3.0.13-py2.py3-none-any.whl", hash = "sha256:9fa7f2eb43c17b8636171c98a8f599d9308b003395322f11cd4cdaba68cdc89a"},
+    {file = "TimeConvert-3.0.13.tar.gz", hash = "sha256:1f4ca99a7e88afe6e19d2d7578078555288055e362f0d170a1e35a8dadf38f03"},
+]
+
+[package.dependencies]
+isoweek = "*"
+python-dateutil = ">=2.8.1"
+tzlocal = "*"
 
 [[package]]
 name = "typing-extensions"
@@ -393,6 +513,23 @@ files = [
 ]
 
 [[package]]
+name = "tzlocal"
+version = "5.0.1"
+description = "tzinfo object for the local timezone"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tzlocal-5.0.1-py3-none-any.whl", hash = "sha256:f3596e180296aaf2dbd97d124fe76ae3a0e3d32b258447de7b939b3fd4be992f"},
+    {file = "tzlocal-5.0.1.tar.gz", hash = "sha256:46eb99ad4bdb71f3f72b7d24f4267753e240944ecfc16f25d2719ba89827a803"},
+]
+
+[package.dependencies]
+tzdata = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+devenv = ["black", "check-manifest", "flake8", "pyroma", "pytest (>=4.3)", "pytest-cov", "pytest-mock (>=3.3)", "zest.releaser"]
+
+[[package]]
 name = "whitenoise"
 version = "6.5.0"
 description = "Radically simplified static file serving for WSGI applications"
@@ -409,7 +546,18 @@ Brotli = {version = "*", optional = true, markers = "extra == \"brotli\""}
 [package.extras]
 brotli = ["Brotli"]
 
+[[package]]
+name = "xlwt"
+version = "1.3.0"
+description = "Library to create spreadsheet files compatible with MS Excel 97/2000/XP/2003 XLS files, on any platform, with Python 2.6, 2.7, 3.3+"
+optional = false
+python-versions = "*"
+files = [
+    {file = "xlwt-1.3.0-py2.py3-none-any.whl", hash = "sha256:a082260524678ba48a297d922cc385f58278b8aa68741596a87de01a9c628b2e"},
+    {file = "xlwt-1.3.0.tar.gz", hash = "sha256:c59912717a9b28f1a3c2a98fd60741014b06b043936dcecbc113eaaada156c88"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "16ce971ec369956c4737fdcde7754de6d95dbd57cf9512007940c6f62487655c"
+content-hash = "d059bc2efe01f6f1415744b4ce751869a11907eaf568866febf05df2c683474c"

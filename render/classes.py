@@ -11,10 +11,10 @@ class Plan(models.Model):
     vertical_speed = models.IntegerField()
     glide_ratio = models.FloatField()
     swoop = models.IntegerField()
-    landing_dir = models.IntegerField()
+    landing_dir = models.IntegerField(null=True, blank=True)
     pattern_dir = models.IntegerField()
     comment = models.CharField(max_length=100)
-    pattern = models.ImageField(upload_to='patterns')
+    pattern = models.ImageField(upload_to='plans')
 
     def __init__(self, inputs, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -29,8 +29,7 @@ class Plan(models.Model):
         self.landing_dir = inputs.get("your_landing_direction", None)
         self.pattern_dir = inputs.get("your_pattern_direction",0)
         self.comment = inputs.get("your_comment", '')
-        self.pattern = "render/langar_map.jpg"
-        self.prepare_pattern()
+        self.pattern = "render/static/render/langar_map.jpg"
 
     def prepare_pattern(self):
         inputs = {'altitudes_ft': [self.final, self.base, self.downwind, self.initial],

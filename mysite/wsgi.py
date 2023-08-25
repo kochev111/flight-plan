@@ -10,7 +10,8 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
-
+path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(path)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 
 application = get_wsgi_application()

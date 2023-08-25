@@ -37,6 +37,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 
 INSTALLED_APPS = [
+    # 'mysite',
     'render.apps.RenderConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'widget_tweaks',
+    # 'widget_tweaks',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,6 +135,7 @@ USE_TZ = True
 # This setting tells Django at which URL static files are going to be served to the user.
 # Here, they well be accessible at your-domain.onrender.com/static/...
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_media')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

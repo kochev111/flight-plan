@@ -21,6 +21,7 @@ class Pattern:
         self.glide_ratio = glide_ratio
         self.swoop_length_m = swoop_length_m
         self.pattern_turn = 90 * int(hand_pattern)  # 1 if left, -1 if right
+        self.pattern_dir = "Left" if hand_pattern == 1 else "Right"# 1 if left, -1 if right
         self.comment = comment
         self.pattern_offsets = {}
         self.forecast = Forecast()
@@ -36,7 +37,6 @@ class Pattern:
         if self.landing_dir_deg is None:
             self.landing_dir_deg = winds[0][1]
         # convert wind and canopy track into radial vectors; quoted in wind convention (e.g. 90 is easterly)
-        self.landing_dir_deg = self.landing_dir_deg
 
         # work backwards from target
         final_time_hrs = (altitudes_m[0] - self.drop_in_turn_m) / 1000 / self.vertical_speed_kmh
@@ -139,7 +139,8 @@ class Pattern:
         text += "Drop in turn ft: " + str(self.drop_in_turn_ft) + "\n"
         text += "Vertical speed mph: " + str(self.vertical_speed_mph) + "\n"
         text += "Glide ratio: " + str(self.glide_ratio) + "\n"
-        text += "Pattern direction: " + str(self.pattern_turn) + "\n"
+        text += "Pattern direction: " + str(self.pattern_dir) + "\n"
+        text += "Landing heading: " + str(self.landing_dir_deg) + "\n"
         text += "Swoop length m: " + str(self.swoop_length_m) + "\n"
         text += "Comment: " + str(self.comment) + "\n"
 
