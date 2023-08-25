@@ -13,14 +13,14 @@ class InputForm(forms.Form):
                                              max_value=2000, initial=1200, step_size=1)
     your_initial = forms.IntegerField(label="Initial setup height, ft", min_value=200,
                                              max_value=2000, initial=1600, step_size=1)
-    your_drop = forms.IntegerField(label="Vertical drop in a 90-degree turn, feet",
-                                      min_value=5, max_value=1000, initial=50)
+    your_drop = forms.IntegerField(label="Incremental vertical drop in a 90-degree turn, feet",
+                                      min_value=5, max_value=1000, initial=40)
     your_vertical_speed = forms.IntegerField(label="Vertical speed, mph", min_value=1,
-                                             max_value=100, initial=20, step_size=1)
+                                             max_value=100, initial=15, step_size=1)
     your_glide_ratio = forms.FloatField(label="Glide Ratio", min_value=0.00,
-                                        max_value=10, initial=2.5, step_size=0.01)
+                                        max_value=10, initial=2.75, step_size=0.01)
     your_swoop = forms.IntegerField(label="Swoop length, m", min_value=0,
-                                             max_value=200, initial=5, step_size=1)
+                                             max_value=200, initial=0, step_size=1)
     your_landing_direction = forms.IntegerField(label="Landing direction, deg (into wind if blank)", min_value=0,
                                              max_value=360, step_size=1, required=False)
     your_pattern_direction = forms.ChoiceField(label="Pattern Direction", widget=forms.RadioSelect, choices=CHOICES)

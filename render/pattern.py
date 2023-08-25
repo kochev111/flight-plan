@@ -121,7 +121,7 @@ class Pattern:
         return PLA
 
     def make_text(self):
-        text = "DISCLAIMER: FLIGHT PLAN IS FOR ILLUSTRATION PURPOSES ONLY. NO LIABILITIES ASSUMED.\n"
+        text = "DISCLAIMER: FLIGHT PLAN IS FOR ILLUSTRATION PURPOSES ONLY\n"
         text += "Winds:\n"
         alts = self.altitudes_ft
         winds = self.forecast.get_forecast(self.altitudes_m)
