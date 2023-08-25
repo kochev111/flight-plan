@@ -121,7 +121,8 @@ class Pattern:
         return PLA
 
     def make_text(self):
-        text = "Winds:\n"
+        text = "DISCLAIMER: FLIGHT PLAN IS FOR ILLUSTRATION PURPOSES ONLY. NO LIABILITIES ASSUMED, EXPRESS OR IMPLIED."
+        text += "Winds:\n"
         alts = self.altitudes_ft
         winds = self.forecast.get_forecast(self.altitudes_m)
         text += "Altitude ft        " + str(alts[0]) + "   " + str(alts[1]) + "   " + str(alts[2]) + "\n"
@@ -146,7 +147,8 @@ class Pattern:
 
         text += "\n"
         text += "Generated " + dt.datetime.now().strftime("%d %B %Y %H:%M:%S") + "\n"
-        text += "Forecast used: open-meteo 30min ahead\n"
+        text += "Based on open-meteo weather forecast 30min ahead - always check actual weather\n"
+
         return text
 
 #
