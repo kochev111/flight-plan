@@ -140,7 +140,7 @@ class Pattern:
         text += "Vertical speed mph: " + str(self.vertical_speed_mph) + "\n"
         text += "Glide ratio: " + str(self.glide_ratio) + "\n"
         text += "Pattern direction: " + str(self.pattern_dir) + "\n"
-        text += "Landing heading: " + str(self.landing_dir_deg) + "\n"
+        text += "Landing heading: " + str(round(self.landing_dir_deg)) + "\n"
         text += "Swoop length m: " + str(self.swoop_length_m) + "\n"
         text += "Comment: " + str(self.comment) + "\n"
 
