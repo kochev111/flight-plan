@@ -141,7 +141,7 @@ class Pattern:
         text += "Heading deg   " + str(round(heading)) + "    " + str(round((heading - turn) % 360)) \
                 + "    " + str(round((heading - 2 * turn) % 360)) + "\n"
         text += "\nAssumptions:\n"
-        text += "Drop in turn ft: " + str(self.drop_in_turn_ft) + "\n"
+        text += "Height loss in 90 turn ft: " + str(self.drop_in_turn_ft) + "\n"
         text += "Vertical speed mph: " + str(self.vertical_speed_mph) + "\n"
         text += "Glide ratio: " + str(self.glide_ratio) + "\n"
         text += "Pattern direction: " + str(self.pattern_dir) + "\n"
