@@ -2,6 +2,7 @@ import math
 from PIL import Image, ImageDraw, ImageFont
 from .forecast import Forecast
 import datetime as dt
+import time
 
 
 class Pattern:
@@ -12,16 +13,18 @@ class Pattern:
             raise Exception("3 or 4 altitudes must be specified for the pattern")
         self.altitudes_m = [x / 3.28084 for x in self.altitudes_ft]
         # altitudes input in feet !
-        self.landing_dir_deg = landing_dir_deg
         # landing direction degrees given in runway convention, i.e. if winds are from 220, land at 220 into wind
-        self.drop_in_turn_ft = drop_in_turn_ft
+        self.landing_dir_deg = landing_dir_deg
+        # convert altitude loss quoted as a total to incremental over normal flight
+        # drop in turn should be quoted as total altitude loss over a full 10-second flight cycle
+        self.drop_in_turn_ft = drop_in_turn_ft - 10/3600 * vertical_speed_mph * 5280
         self.drop_in_turn_m = drop_in_turn_ft / 3.28084
         self.vertical_speed_mph = vertical_speed_mph
         self.vertical_speed_kmh = self.vertical_speed_mph * 1.60934
         self.glide_ratio = glide_ratio
         self.swoop_length_m = swoop_length_m
         self.pattern_turn = 90 * int(hand_pattern)  # 1 if left, -1 if right
-        self.pattern_dir = "Left" if hand_pattern == 1 else "Right"# 1 if left, -1 if right
+        self.pattern_dir = "Left" if int(hand_pattern) == 1 else "Right"# 1 if left, -1 if right
         self.comment = comment
         self.pattern_offsets = {}
         self.forecast = Forecast()
@@ -146,7 +149,7 @@ class Pattern:
         text += "Comment: " + str(self.comment) + "\n"
 
         text += "\n"
-        text += "Generated " + dt.datetime.now().strftime("%d %B %Y %H:%M:%S") + "\n"
+        text += "Generated: " + time.strftime("%Y-%m-%d %H:%M:%S %Z, time offset: %z", time.localtime()) + "\n"
         text += "Based on open-meteo weather forecast 30min ahead\n"
 
         return text

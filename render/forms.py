@@ -6,14 +6,14 @@ CHOICES = [
 ]
 class InputForm(forms.Form):
     your_final = forms.IntegerField(label="Final approach height, ft", min_value=200,
-                                             max_value=1000, initial=400, step_size=1)
+                                             max_value=2000, initial=400, step_size=1)
     your_base = forms.IntegerField(label="Base leg height, ft", min_value=200,
-                                             max_value=1000, initial=800, step_size=1)
+                                             max_value=2000, initial=800, step_size=1)
     your_downwind = forms.IntegerField(label="Downwind leg height, ft", min_value=200,
                                              max_value=2000, initial=1200, step_size=1)
     your_initial = forms.IntegerField(label="Initial setup height, ft", min_value=200,
-                                             max_value=2000, initial=1600, step_size=1)
-    your_drop = forms.IntegerField(label="Incremental vertical drop in a 90-degree turn, feet",
+                                             max_value=2500, initial=1600, step_size=1)
+    your_drop = forms.IntegerField(label="Height loss in a 90-degree turn (10s flight cycle), ft",
                                       min_value=5, max_value=1000, initial=40)
     your_vertical_speed = forms.IntegerField(label="Vertical speed, mph", min_value=1,
                                              max_value=100, initial=15, step_size=1)
