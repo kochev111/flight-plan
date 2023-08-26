@@ -15,6 +15,9 @@ class InputForm(forms.Form):
                                              max_value=2500, initial=1600, step_size=1)
     your_drop = forms.IntegerField(label="Height loss in a 90-degree turn (10s flight cycle), ft",
                                       min_value=5, max_value=1000, initial=240)
+    your_final_drop = forms.IntegerField(label="Height loss in final turn (10s flight cycle), ft",
+                                      min_value=5, max_value=1500, initial=240)
+
     your_vertical_speed = forms.IntegerField(label="Vertical speed, mph", min_value=1,
                                              max_value=100, initial=15, step_size=1)
     your_glide_ratio = forms.FloatField(label="Glide Ratio", min_value=0.00,

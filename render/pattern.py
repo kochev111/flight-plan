@@ -6,7 +6,7 @@ import time
 
 
 class Pattern:
-    def __init__(self, altitudes_ft=[], landing_dir_deg=None, drop_in_turn_ft=0, vertical_speed_mph=0,
+    def __init__(self, altitudes_ft=[], landing_dir_deg=None, drop_in_turn_ft=0, final_drop_in_turn_ft=0, vertical_speed_mph=0,
                  glide_ratio=0, swoop_length_m=0, hand_pattern=0, comment=''):
         self.altitudes_ft = altitudes_ft
         if len(altitudes_ft) not in (3, 4):
@@ -18,8 +18,11 @@ class Pattern:
         # convert altitude loss quoted as a total to incremental over normal flight
         # drop in turn should be quoted as total altitude loss over a full 10-second flight cycle
         self.drop_in_turn_ft = drop_in_turn_ft
+        self.final_drop_in_turn_ft = final_drop_in_turn_ft
         self.incremental_drop_in_turn_ft = drop_in_turn_ft - 10 / 3600 * vertical_speed_mph * 5280
         self.incremental_drop_in_turn_m = self.incremental_drop_in_turn_ft / 3.28084
+        self.incremental_final_drop_in_turn_ft = final_drop_in_turn_ft - 10 / 3600 * vertical_speed_mph * 5280
+        self.incremental_final_drop_in_turn_m = self.incremental_final_drop_in_turn_ft / 3.28084
         self.vertical_speed_mph = vertical_speed_mph
         self.vertical_speed_kmh = self.vertical_speed_mph * 1.60934
         self.glide_ratio = glide_ratio
@@ -43,7 +46,7 @@ class Pattern:
         # convert wind and canopy track into radial vectors; quoted in wind convention (e.g. 90 is easterly)
 
         # work backwards from target
-        final_time_hrs = (altitudes_m[0] - self.incremental_drop_in_turn_m) / 1000 / self.vertical_speed_kmh
+        final_time_hrs = (altitudes_m[0] - self.incremental_final_drop_in_turn_m) / 1000 / self.vertical_speed_kmh
         final_track_rad = (final_time_hrs * self.vertical_speed_kmh * self.glide_ratio * 1000
                            + self.swoop_length_m,
                            self.landing_dir_deg - 180)  # landing direction converted from runway convention
