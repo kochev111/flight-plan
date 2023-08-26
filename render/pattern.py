@@ -59,7 +59,7 @@ class Pattern:
         base_drift_rad = (base_time_hrs * winds[1][0] * 1000, winds[1][1])
         base_offset = self.add_vectors(base_drift_rad, base_track_rad)
 
-        downwind_time_hrs = (0.001 * altitudes_m[2] - altitudes_m[1] - self.incremental_drop_in_turn_m) / \
+        downwind_time_hrs = 0.001 * (altitudes_m[2] - altitudes_m[1] - self.incremental_drop_in_turn_m) / \
                             self.vertical_speed_kmh
         downwind_track_rad = (downwind_time_hrs * self.vertical_speed_kmh * self.glide_ratio * 1000,
                               self.landing_dir_deg - 180 + 2 * self.pattern_turn)
