@@ -46,20 +46,20 @@ class Pattern:
         # convert wind and canopy track into radial vectors; quoted in wind convention (e.g. 90 is easterly)
 
         # work backwards from target
-        final_time_hrs = (altitudes_m[0] - self.incremental_final_drop_in_turn_m) / 1000 / self.vertical_speed_kmh
+        final_time_hrs = 0.001 * (altitudes_m[0] - self.incremental_final_drop_in_turn_m) / self.vertical_speed_kmh
         final_track_rad = (final_time_hrs * self.vertical_speed_kmh * self.glide_ratio * 1000
                            + self.swoop_length_m,
                            self.landing_dir_deg - 180)  # landing direction converted from runway convention
         final_drift_rad = (final_time_hrs * winds[0][0] * 1000, winds[0][1])
         final_offset = self.add_vectors(final_drift_rad, final_track_rad)
 
-        base_time_hrs = (altitudes_m[1] - altitudes_m[0] - self.incremental_drop_in_turn_m) / 1000 / self.vertical_speed_kmh
+        base_time_hrs = 0.001 * (altitudes_m[1] - altitudes_m[0] - self.incremental_drop_in_turn_m) / self.vertical_speed_kmh
         base_track_rad = (base_time_hrs * self.vertical_speed_kmh * self.glide_ratio * 1000,
                           self.landing_dir_deg - 180 + self.pattern_turn)
         base_drift_rad = (base_time_hrs * winds[1][0] * 1000, winds[1][1])
         base_offset = self.add_vectors(base_drift_rad, base_track_rad)
 
-        downwind_time_hrs = (altitudes_m[2] - altitudes_m[1] - self.incremental_drop_in_turn_m) / 1000 / \
+        downwind_time_hrs = (0.001 * altitudes_m[2] - altitudes_m[1] - self.incremental_drop_in_turn_m) / \
                             self.vertical_speed_kmh
         downwind_track_rad = (downwind_time_hrs * self.vertical_speed_kmh * self.glide_ratio * 1000,
                               self.landing_dir_deg - 180 + 2 * self.pattern_turn)
@@ -72,8 +72,8 @@ class Pattern:
                                 }
 
         if len(altitudes_m) == 4:
-            initial_time_hrs = (altitudes_m[3] - altitudes_m[2] - self.incremental_drop_in_turn_m) / 1000 / (
-                self.vertical_speed_kmh)
+            initial_time_hrs = 0.001 * (altitudes_m[3] - altitudes_m[2] - self.incremental_drop_in_turn_m) / \
+                               self.vertical_speed_kmh
             initial_track_rad = (downwind_time_hrs * self.vertical_speed_kmh * self.glide_ratio * 1000,
                                  self.landing_dir_deg - 180 + 3 * self.pattern_turn)
             initial_drift_rad = (initial_time_hrs * winds[3][0] * 1000, winds[3][1])
