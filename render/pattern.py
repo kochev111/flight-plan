@@ -47,7 +47,7 @@ class Pattern:
         # convert wind and canopy track into radial vectors; quoted in wind convention (e.g. 90 is easterly)
 
         # work backwards from target
-        final_time_hrs = 0.001 * (altitudes_m[0] - self.final_drop_in_turn_m) / self.vertical_speed_kmh + 10/3600
+        final_time_hrs = 0.001 * (altitudes_m[0] - self.final_drop_in_turn_m) / self.vertical_speed_kmh + 10/3600/2
         final_track_rad = ( final_time_hrs * self.vertical_speed_kmh * 1000 * self.glide_ratio
                            + self.swoop_length_m,
                            self.landing_dir_deg - 180)  # landing direction converted from runway convention
@@ -66,6 +66,7 @@ class Pattern:
                               self.landing_dir_deg - 180 + 2 * self.pattern_turn)
         downwind_drift_rad = (downwind_time_hrs * winds[2][0] * 1000, winds[2][1])
         downwind_offset = self.add_vectors(downwind_drift_rad, downwind_track_rad)
+        self.total_time = downwind_time_hrs + base_time_hrs + final_time_hrs
 
         self.pattern_offsets = {'final': final_offset,
                                 'base': base_offset,
@@ -79,6 +80,7 @@ class Pattern:
                                  self.landing_dir_deg - 180 + 3 * self.pattern_turn)
             initial_drift_rad = (initial_time_hrs * winds[3][0] * 1000, winds[3][1])
             initial_offset = self.add_vectors(initial_drift_rad, initial_track_rad)
+            self.total_time += initial_time_hrs
 
             self.pattern_offsets['initial'] = initial_offset
 
@@ -152,6 +154,7 @@ class Pattern:
         text += "Pattern direction: " + str(self.pattern_dir) + "\n"
         text += "Landing heading: " + str(round(self.landing_dir_deg)) + "\n"
         text += "Swoop length m: " + str(self.swoop_length_m) + "\n"
+        text += "Total time, min: " + str(round(self.total_time*60, 1)) + "\n"
         text += "Comment: " + str(self.comment) + "\n"
 
         text += "\n"
